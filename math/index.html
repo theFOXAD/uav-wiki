@@ -1,0 +1,1489 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://theFOXAD.github.io/uav-wiki/math/">
+      
+      
+        <link rel="prev" href="../hardware/">
+      
+      
+        <link rel="next" href="../quickstart/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>四旋翼数学基础 - e100学习手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="e100学习手册" class="md-header__button md-logo" aria-label="e100学习手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            e100学习手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              四旋翼数学基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="e100学习手册" class="md-nav__button md-logo" aria-label="e100学习手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    e100学习手册
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概览
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    基础入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    无人机硬件基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    四旋翼数学基础
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    四旋翼数学基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么四旋翼需要数学模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性代数基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="线性代数基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向量与状态表示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        矩阵与线性变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特征值与系统稳定性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坐标系与坐标转换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="坐标系与坐标转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见坐标系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        旋转矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        欧拉角与分步旋转
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        欧拉角与四元数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="欧拉角与四元数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        欧拉角
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四元数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四元数到旋转矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四旋翼动力学的基本形式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四旋翼动力学的基本形式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        平动方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转动方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制分配的数学关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卡尔曼滤波
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="卡尔曼滤波">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要滤波
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性卡尔曼滤波
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        扩展卡尔曼滤波
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个典型的姿态融合思路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从数学到飞控实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速开始
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进阶开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    进阶开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sd-document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二次开发指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么四旋翼需要数学模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性代数基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="线性代数基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向量与状态表示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        矩阵与线性变换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特征值与系统稳定性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坐标系与坐标转换
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="坐标系与坐标转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见坐标系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        旋转矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        欧拉角与分步旋转
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        欧拉角与四元数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="欧拉角与四元数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        欧拉角
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四元数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四元数到旋转矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四旋翼动力学的基本形式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四旋翼动力学的基本形式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        平动方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        转动方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制分配的数学关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        卡尔曼滤波
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="卡尔曼滤波">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要滤波
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性卡尔曼滤波
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        扩展卡尔曼滤波
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个典型的姿态融合思路
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从数学到飞控实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">四旋翼无人机数学基础</h1>
+<p>四旋翼无人机的控制、导航与状态估计都建立在一套稳定的数学工具之上。本页从工程视角梳理几类最常见的基础知识，帮助你理解姿态控制、位置控制和传感器融合背后的核心思路。</p>
+<h2 id="_2">为什么四旋翼需要数学模型</h2>
+<p>四旋翼并不是“直接给电机油门就能稳定飞行”的系统。飞控在每一个控制周期都需要回答几个问题：</p>
+<ul>
+<li>当前机体的姿态和位置是什么。</li>
+<li>目标姿态、目标速度或目标位置是什么。</li>
+<li>当前状态与目标状态之间误差有多大。</li>
+<li>应该如何分配四个电机的推力来修正误差。</li>
+</ul>
+<p>这些问题分别对应到线性代数、坐标变换、刚体姿态表示、动力学建模以及状态估计。</p>
+<h2 id="_3">线性代数基础</h2>
+<p>线性代数是四旋翼建模最常用的语言。状态量、控制量和传感器测量值几乎都可以写成向量或矩阵。</p>
+<h3 id="_4">向量与状态表示</h3>
+<p>在飞控系统中，常见状态向量可以写成：</p>
+<pre><code class="language-text">x = [p_x, p_y, p_z, v_x, v_y, v_z, phi, theta, psi]^T
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>p</code> 表示位置。</li>
+<li><code>v</code> 表示速度。</li>
+<li><code>phi, theta, psi</code> 分别表示滚转角、俯仰角、偏航角。</li>
+</ul>
+<p>如果系统使用四元数，也常写成：</p>
+<pre><code class="language-text">x = [p, v, q, omega]^T
+</code></pre>
+<p>这里：</p>
+<ul>
+<li><code>p</code> 是位置向量。</li>
+<li><code>v</code> 是速度向量。</li>
+<li><code>q</code> 是姿态四元数。</li>
+<li><code>omega</code> 是角速度向量。</li>
+</ul>
+<h3 id="_5">矩阵与线性变换</h3>
+<p>矩阵常用于：</p>
+<ul>
+<li>坐标系之间的旋转。</li>
+<li>线性系统近似。</li>
+<li>多旋翼控制分配。</li>
+<li>卡尔曼滤波中的协方差传播。</li>
+</ul>
+<p>例如三维向量 <code>v</code> 经过旋转矩阵 <code>R</code> 后可写成：</p>
+<pre><code class="language-text">v_world = R * v_body
+</code></pre>
+<p>这表示把机体系中的向量转换到世界坐标系中。</p>
+<h3 id="_6">特征值与系统稳定性</h3>
+<p>在线性控制理论里，系统常被写为：</p>
+<pre><code class="language-text">x_dot = A x + B u
+</code></pre>
+<p>矩阵 <code>A</code> 的特征值决定了系统局部稳定性：</p>
+<ul>
+<li>特征值实部小于 0，系统趋于稳定。</li>
+<li>特征值实部大于 0，系统会发散。</li>
+</ul>
+<p>虽然实际四旋翼是非线性系统，但在平衡点附近常会线性化，便于分析控制器性能。</p>
+<h2 id="_7">坐标系与坐标转换</h2>
+<p>四旋翼控制中最容易混淆的内容之一就是坐标系。只要坐标系定义不清，控制方向就很容易写反。</p>
+<h3 id="_8">常见坐标系</h3>
+<p>通常会涉及两类坐标系：</p>
+<ol>
+<li>世界坐标系</li>
+<li>机体坐标系</li>
+</ol>
+<p>世界坐标系一般固定在地面，常用于表示位置、航点和全局速度；机体坐标系固定在无人机机身上，随姿态变化而变化。</p>
+<p>常见约定如下：</p>
+<ul>
+<li>世界系 <code>W</code>：<code>x</code> 指向前方或东，<code>y</code> 指向左方或北，<code>z</code> 指向上方。</li>
+<li>机体系 <code>B</code>：<code>x</code> 指向机头，<code>y</code> 指向左翼，<code>z</code> 指向上方。</li>
+</ul>
+<p>不同飞控或论文中可能使用 <code>NED</code> 或 <code>ENU</code> 坐标系，因此实现时必须确认符号约定。</p>
+<h3 id="_9">旋转矩阵</h3>
+<p>如果四旋翼姿态由旋转矩阵 <code>R</code> 表示，则 <code>R</code> 满足：</p>
+<pre><code class="language-text">R^T R = I
+det(R) = 1
+</code></pre>
+<p>这表示：</p>
+<ul>
+<li>列向量互相正交。</li>
+<li>旋转不会改变向量长度。</li>
+<li>旋转不包含镜像变换。</li>
+</ul>
+<p>把机体系加速度转换到世界系时，常写成：</p>
+<pre><code class="language-text">a_world = R * a_body
+</code></pre>
+<p>而从世界系转换回机体系则常用：</p>
+<pre><code class="language-text">a_body = R^T * a_world
+</code></pre>
+<h3 id="_10">欧拉角与分步旋转</h3>
+<p>很多飞控实现会用滚转 <code>phi</code>、俯仰 <code>theta</code>、偏航 <code>psi</code> 表示姿态。若按 <code>Z-Y-X</code> 顺序旋转，则总旋转矩阵可以写成：</p>
+<pre><code class="language-text">R = R_z(psi) R_y(theta) R_x(phi)
+</code></pre>
+<p>它的优点是直观，便于理解“先偏航、再俯仰、再滚转”的过程；缺点是在某些姿态附近会出现奇异性问题。</p>
+<h2 id="_11">欧拉角与四元数</h2>
+<p>四旋翼姿态表示最常见的两种方法是欧拉角和四元数。</p>
+<h3 id="_12">欧拉角</h3>
+<p>欧拉角的优点：</p>
+<ul>
+<li>物理意义直观。</li>
+<li>便于人工调试和可视化。</li>
+<li>控制误差容易解释。</li>
+</ul>
+<p>欧拉角的缺点：</p>
+<ul>
+<li>存在万向节锁问题。</li>
+<li>大角度机动时数值表现较差。</li>
+<li>角速度与姿态角变化率关系并不简单。</li>
+</ul>
+<p>例如角速度向量 <code>omega = [p, q, r]^T</code> 与欧拉角导数 <code>[\dot phi, \dot theta, \dot psi]^T</code> 并不是简单相等关系，而是通过一个姿态相关矩阵耦合起来。</p>
+<h3 id="_13">四元数</h3>
+<p>四元数常写为：</p>
+<pre><code class="language-text">q = [q_w, q_x, q_y, q_z]^T
+</code></pre>
+<p>它可以看作“旋转轴 + 旋转角”的紧凑表示方式。若绕单位轴 <code>u = [u_x, u_y, u_z]^T</code> 旋转角度 <code>theta</code>，则四元数为：</p>
+<pre><code class="language-text">q = [cos(theta/2), u_x sin(theta/2), u_y sin(theta/2), u_z sin(theta/2)]^T
+</code></pre>
+<p>四元数的优势：</p>
+<ul>
+<li>没有万向节锁。</li>
+<li>更适合连续积分和姿态插值。</li>
+<li>在姿态估计与滤波中更稳定。</li>
+</ul>
+<p>工程上需要注意：</p>
+<ul>
+<li>单位四元数必须满足 <code>||q|| = 1</code>。</li>
+<li>每次积分更新后通常都要重新归一化。</li>
+<li><code>q</code> 和 <code>-q</code> 表示同一个物理姿态。</li>
+</ul>
+<h3 id="_14">四元数到旋转矩阵</h3>
+<p>设四元数为 <code>q = [w, x, y, z]^T</code>，对应旋转矩阵可写为：</p>
+<pre><code class="language-text">R(q) =
+[1 - 2(y^2 + z^2), 2(xy - wz),     2(xz + wy)
+ 2(xy + wz),       1 - 2(x^2 + z^2), 2(yz - wx)
+ 2(xz - wy),       2(yz + wx),     1 - 2(x^2 + y^2)]
+</code></pre>
+<p>因此四元数最终仍然能转换成旋转矩阵，用于坐标变换和推力方向计算。</p>
+<h2 id="_15">四旋翼动力学的基本形式</h2>
+<p>四旋翼本质上是一个六自由度刚体系统，包含三维平动和三维转动。</p>
+<h3 id="_16">平动方程</h3>
+<p>设四个桨产生的总推力为 <code>T</code>，质量为 <code>m</code>，重力加速度为 <code>g</code>，则平动方程常写成：</p>
+<pre><code class="language-text">m p_ddot = R * [0, 0, T]^T + [0, 0, -mg]^T
+</code></pre>
+<p>含义是：</p>
+<ul>
+<li>推力方向由机体 <code>z</code> 轴经过姿态矩阵 <code>R</code> 映射到世界系。</li>
+<li>重力始终作用在世界坐标系竖直方向。</li>
+</ul>
+<p>这也是为什么姿态控制会直接影响位置控制。无人机想向前飞，并不是“产生前向推力”，而是先俯仰，让总推力向前倾斜。</p>
+<h3 id="_17">转动方程</h3>
+<p>转动动力学常由刚体欧拉方程描述：</p>
+<pre><code class="language-text">J omega_dot + omega x (J omega) = tau
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>J</code> 是惯性矩阵。</li>
+<li><code>omega</code> 是机体角速度。</li>
+<li><code>tau</code> 是总控制力矩。</li>
+</ul>
+<p>三个轴上的控制力矩通常来自：</p>
+<ul>
+<li>电机推力差引起的滚转力矩。</li>
+<li>电机推力差引起的俯仰力矩。</li>
+<li>螺旋桨反扭矩引起的偏航力矩。</li>
+</ul>
+<h2 id="_18">控制分配的数学关系</h2>
+<p>四旋翼飞控最终要把“总推力 + 三轴力矩”的控制需求分配给四个电机。</p>
+<p>若电机推力为 <code>f_1, f_2, f_3, f_4</code>，则常见的控制分配写法是：</p>
+<pre><code class="language-text">[ T   ]   [ 1  1  1  1 ] [f_1]
+[tau_x] = [ 0  l  0 -l ] [f_2]
+[tau_y]   [-l  0  l  0 ] [f_3]
+[tau_z]   [ c -c  c -c ] [f_4]
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>l</code> 是电机到机体中心的力臂长度。</li>
+<li><code>c</code> 是反扭矩系数。</li>
+</ul>
+<p>这本质上是一个矩阵映射问题。已知期望控制量 <code>[T, tau_x, tau_y, tau_z]^T</code> 后，就可以通过求逆或伪逆计算四个电机推力指令。</p>
+<h2 id="_19">卡尔曼滤波</h2>
+<p>真实飞行时，无人机无法直接获得“完美状态”，只能通过 IMU、气压计、GPS、磁力计、视觉里程计等传感器进行估计。卡尔曼滤波就是最常见的状态估计工具之一。</p>
+<h3 id="_20">为什么需要滤波</h3>
+<p>不同传感器各有优缺点：</p>
+<ul>
+<li>陀螺仪短时间响应快，但积分后会漂移。</li>
+<li>加速度计能感知重力方向，但受机动加速度干扰较大。</li>
+<li>GPS 能给全局位置，但频率低、噪声大。</li>
+<li>气压计能估计高度，但容易受气流影响。</li>
+</ul>
+<p>因此需要一种方法，把系统模型和多个传感器测量结合起来，得到更稳定的状态估计。</p>
+<h3 id="_21">线性卡尔曼滤波</h3>
+<p>线性离散系统通常写成：</p>
+<pre><code class="language-text">x_k = A x_{k-1} + B u_k + w_k
+y_k = H x_k + v_k
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>x_k</code> 是时刻 <code>k</code> 的状态。</li>
+<li><code>u_k</code> 是控制输入。</li>
+<li><code>y_k</code> 是测量值。</li>
+<li><code>w_k</code> 是过程噪声。</li>
+<li><code>v_k</code> 是测量噪声。</li>
+</ul>
+<p>卡尔曼滤波分两步：</p>
+<ol>
+<li>预测：利用系统模型预测当前状态。</li>
+<li>更新：利用传感器观测修正预测结果。</li>
+</ol>
+<p>核心增益为：</p>
+<pre><code class="language-text">K_k = P_k^- H^T (H P_k^- H^T + R)^-1
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>P_k^-</code> 是预测协方差。</li>
+<li><code>R</code> 是测量噪声协方差。</li>
+<li><code>K_k</code> 越大，表示越相信测量值。</li>
+</ul>
+<h3 id="_22">扩展卡尔曼滤波</h3>
+<p>四旋翼姿态和运动方程通常是非线性的，因此工程上更常见的是扩展卡尔曼滤波 <code>EKF</code>。</p>
+<p>EKF 的思路是：</p>
+<ul>
+<li>使用非线性函数描述系统状态传播和测量过程。</li>
+<li>在当前工作点对非线性函数做一阶线性化。</li>
+<li>使用雅可比矩阵代替线性卡尔曼滤波中的 <code>A</code> 和 <code>H</code>。</li>
+</ul>
+<p>在四旋翼中，EKF 常用于估计：</p>
+<ul>
+<li>姿态四元数。</li>
+<li>陀螺仪零偏。</li>
+<li>速度与位置。</li>
+<li>高度或视觉定位状态。</li>
+</ul>
+<h3 id="_23">一个典型的姿态融合思路</h3>
+<p>以 IMU 姿态估计为例：</p>
+<ul>
+<li>陀螺仪提供角速度，用于短时积分预测姿态。</li>
+<li>加速度计测得重力方向，用于修正俯仰和滚转。</li>
+<li>磁力计提供地磁方向，用于修正偏航。</li>
+</ul>
+<p>这样可以兼顾响应速度和长期稳定性。</p>
+<h2 id="_24">从数学到飞控实现</h2>
+<p>如果把四旋翼飞控系统拆开看，常会得到下面这条链路：</p>
+<ol>
+<li>使用四元数或旋转矩阵表示姿态。</li>
+<li>使用坐标变换把传感器数据统一到同一坐标系。</li>
+<li>使用卡尔曼滤波或互补滤波估计状态。</li>
+<li>基于动力学模型设计姿态环、角速度环和位置环控制器。</li>
+<li>通过控制分配矩阵把控制量转换成四个电机输出。</li>
+</ol>
+<p>这说明数学并不是独立的理论模块，而是从传感器输入一路贯穿到电机输出。</p>
+<h2 id="_25">学习建议</h2>
+<p>如果你准备进一步阅读飞控代码或自行实现控制算法，建议按下面顺序掌握：</p>
+<ol>
+<li>三维向量、矩阵乘法、转置与逆矩阵。</li>
+<li>欧拉角、旋转矩阵、四元数之间的转换。</li>
+<li>刚体平动与转动动力学。</li>
+<li>PID 控制与线性化分析。</li>
+<li>卡尔曼滤波、扩展卡尔曼滤波和传感器融合。</li>
+</ol>
+<p>当这些概念串起来后，你会更容易理解 PX4、ArduPilot 或自研飞控中的姿态解算、状态估计和控制分配模块。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

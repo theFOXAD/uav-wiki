@@ -1,17 +1,25 @@
-# Welcome to MkDocs
+# UAV Wiki 首页
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+欢迎来到 UAV Wiki，这是一个关于无人机的综合文档站点。本站点使用 MkDocs 构建，提供无人机相关的技术文档、教程和参考资料。
 
-## Commands
+## 文档站结构
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+本文档站包含以下主要部分：
 
-## Project layout
+- **[快速开始](quickstart.md)**: 入门指南，帮助新手快速了解无人机基础知识和操作。
+- **[硬件](hardware.md)**: 详细介绍无人机硬件组件、选型和配置。
+- **[数学](math.md)**: 无人机控制和导航相关的数学原理，包括动力学、控制理论等。
+- **[SD文档](sd-document.md)**: 软件定义无人机相关的文档和技术规范。
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## 如何使用
+
+- 使用左侧导航栏浏览不同章节。
+- 使用搜索功能快速查找内容。
+- 如果您发现文档有误或需要补充，请通过 GitHub 提交 issue 或 pull request。
+
+## 构建和部署
+
+本站点基于 MkDocs，您可以使用以下命令进行本地开发：
+
+- `mkdocs serve`: 启动本地服务器预览站点。
+- `mkdocs build`: 构建静态站点文件。

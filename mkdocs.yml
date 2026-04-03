@@ -1,0 +1,14 @@
+site_name: e100学习手册
+site_url: https://uav-wiki.page.dev
+theme:
+  name: material
+
+nav:
+  - 概览:
+      - 首页: index.md
+  - 基础入门:
+      - 无人机硬件基础: hardware.md
+      - 四旋翼数学基础: math.md
+  - 快速开始: quickstart.md
+  - 进阶开发:
+      - 二次开发指南: sd-document.md

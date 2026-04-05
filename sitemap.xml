@@ -2,22 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://theFOXAD.github.io/uav-wiki/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-04-05</lastmod>
     </url>
     <url>
          <loc>https://theFOXAD.github.io/uav-wiki/hardware/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-04-05</lastmod>
     </url>
     <url>
          <loc>https://theFOXAD.github.io/uav-wiki/math/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-04-05</lastmod>
     </url>
     <url>
          <loc>https://theFOXAD.github.io/uav-wiki/quickstart/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-04-05</lastmod>
     </url>
     <url>
          <loc>https://theFOXAD.github.io/uav-wiki/sd-document/</loc>
-         <lastmod>2026-04-03</lastmod>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://theFOXAD.github.io/uav-wiki/sd-document/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://theFOXAD.github.io/uav-wiki/sd-document/lubancat/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://theFOXAD.github.io/uav-wiki/sd-document/mcu/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>https://theFOXAD.github.io/uav-wiki/sd-document/uart-tx-node/</loc>
+         <lastmod>2026-04-05</lastmod>
     </url>
 </urlset>

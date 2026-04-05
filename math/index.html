@@ -201,15 +201,22 @@
     
     
     
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
         
           
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
             
   
   
@@ -285,15 +292,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -763,15 +775,22 @@
     
     
     
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -806,9 +825,24 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../sd-document/" class="md-nav__link">
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -822,7 +856,135 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    二次开发指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sd-document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文档总览
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sd-document/lubancat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LubanCat 机载电脑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sd-document/mcu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCU 开发指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sd-document/uart-tx-node/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UART 通信节点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1172,9 +1334,9 @@
 
 
 
-<h1 id="_1">四旋翼无人机数学基础</h1>
+<h1 id="_1">四旋翼无人机数学基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>四旋翼无人机的控制、导航与状态估计都建立在一套稳定的数学工具之上。本页从工程视角梳理几类最常见的基础知识，帮助你理解姿态控制、位置控制和传感器融合背后的核心思路。</p>
-<h2 id="_2">为什么四旋翼需要数学模型</h2>
+<h2 id="_2">为什么四旋翼需要数学模型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>四旋翼并不是“直接给电机油门就能稳定飞行”的系统。飞控在每一个控制周期都需要回答几个问题：</p>
 <ul>
 <li>当前机体的姿态和位置是什么。</li>
@@ -1183,9 +1345,9 @@
 <li>应该如何分配四个电机的推力来修正误差。</li>
 </ul>
 <p>这些问题分别对应到线性代数、坐标变换、刚体姿态表示、动力学建模以及状态估计。</p>
-<h2 id="_3">线性代数基础</h2>
+<h2 id="_3">线性代数基础<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>线性代数是四旋翼建模最常用的语言。状态量、控制量和传感器测量值几乎都可以写成向量或矩阵。</p>
-<h3 id="_4">向量与状态表示</h3>
+<h3 id="_4">向量与状态表示<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>在飞控系统中，常见状态向量可以写成：</p>
 <pre><code class="language-text">x = [p_x, p_y, p_z, v_x, v_y, v_z, phi, theta, psi]^T
 </code></pre>
@@ -1205,7 +1367,7 @@
 <li><code>q</code> 是姿态四元数。</li>
 <li><code>omega</code> 是角速度向量。</li>
 </ul>
-<h3 id="_5">矩阵与线性变换</h3>
+<h3 id="_5">矩阵与线性变换<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>矩阵常用于：</p>
 <ul>
 <li>坐标系之间的旋转。</li>
@@ -1217,7 +1379,7 @@
 <pre><code class="language-text">v_world = R * v_body
 </code></pre>
 <p>这表示把机体系中的向量转换到世界坐标系中。</p>
-<h3 id="_6">特征值与系统稳定性</h3>
+<h3 id="_6">特征值与系统稳定性<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>在线性控制理论里，系统常被写为：</p>
 <pre><code class="language-text">x_dot = A x + B u
 </code></pre>
@@ -1227,9 +1389,9 @@
 <li>特征值实部大于 0，系统会发散。</li>
 </ul>
 <p>虽然实际四旋翼是非线性系统，但在平衡点附近常会线性化，便于分析控制器性能。</p>
-<h2 id="_7">坐标系与坐标转换</h2>
+<h2 id="_7">坐标系与坐标转换<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>四旋翼控制中最容易混淆的内容之一就是坐标系。只要坐标系定义不清，控制方向就很容易写反。</p>
-<h3 id="_8">常见坐标系</h3>
+<h3 id="_8">常见坐标系<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>通常会涉及两类坐标系：</p>
 <ol>
 <li>世界坐标系</li>
@@ -1242,7 +1404,7 @@
 <li>机体系 <code>B</code>：<code>x</code> 指向机头，<code>y</code> 指向左翼，<code>z</code> 指向上方。</li>
 </ul>
 <p>不同飞控或论文中可能使用 <code>NED</code> 或 <code>ENU</code> 坐标系，因此实现时必须确认符号约定。</p>
-<h3 id="_9">旋转矩阵</h3>
+<h3 id="_9">旋转矩阵<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>如果四旋翼姿态由旋转矩阵 <code>R</code> 表示，则 <code>R</code> 满足：</p>
 <pre><code class="language-text">R^T R = I
 det(R) = 1
@@ -1259,14 +1421,14 @@ det(R) = 1
 <p>而从世界系转换回机体系则常用：</p>
 <pre><code class="language-text">a_body = R^T * a_world
 </code></pre>
-<h3 id="_10">欧拉角与分步旋转</h3>
+<h3 id="_10">欧拉角与分步旋转<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>很多飞控实现会用滚转 <code>phi</code>、俯仰 <code>theta</code>、偏航 <code>psi</code> 表示姿态。若按 <code>Z-Y-X</code> 顺序旋转，则总旋转矩阵可以写成：</p>
 <pre><code class="language-text">R = R_z(psi) R_y(theta) R_x(phi)
 </code></pre>
 <p>它的优点是直观，便于理解“先偏航、再俯仰、再滚转”的过程；缺点是在某些姿态附近会出现奇异性问题。</p>
-<h2 id="_11">欧拉角与四元数</h2>
+<h2 id="_11">欧拉角与四元数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <p>四旋翼姿态表示最常见的两种方法是欧拉角和四元数。</p>
-<h3 id="_12">欧拉角</h3>
+<h3 id="_12">欧拉角<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>欧拉角的优点：</p>
 <ul>
 <li>物理意义直观。</li>
@@ -1280,7 +1442,7 @@ det(R) = 1
 <li>角速度与姿态角变化率关系并不简单。</li>
 </ul>
 <p>例如角速度向量 <code>omega = [p, q, r]^T</code> 与欧拉角导数 <code>[\dot phi, \dot theta, \dot psi]^T</code> 并不是简单相等关系，而是通过一个姿态相关矩阵耦合起来。</p>
-<h3 id="_13">四元数</h3>
+<h3 id="_13">四元数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>四元数常写为：</p>
 <pre><code class="language-text">q = [q_w, q_x, q_y, q_z]^T
 </code></pre>
@@ -1299,7 +1461,7 @@ det(R) = 1
 <li>每次积分更新后通常都要重新归一化。</li>
 <li><code>q</code> 和 <code>-q</code> 表示同一个物理姿态。</li>
 </ul>
-<h3 id="_14">四元数到旋转矩阵</h3>
+<h3 id="_14">四元数到旋转矩阵<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>设四元数为 <code>q = [w, x, y, z]^T</code>，对应旋转矩阵可写为：</p>
 <pre><code class="language-text">R(q) =
 [1 - 2(y^2 + z^2), 2(xy - wz),     2(xz + wy)
@@ -1307,9 +1469,9 @@ det(R) = 1
  2(xz - wy),       2(yz + wx),     1 - 2(x^2 + y^2)]
 </code></pre>
 <p>因此四元数最终仍然能转换成旋转矩阵，用于坐标变换和推力方向计算。</p>
-<h2 id="_15">四旋翼动力学的基本形式</h2>
+<h2 id="_15">四旋翼动力学的基本形式<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <p>四旋翼本质上是一个六自由度刚体系统，包含三维平动和三维转动。</p>
-<h3 id="_16">平动方程</h3>
+<h3 id="_16">平动方程<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>设四个桨产生的总推力为 <code>T</code>，质量为 <code>m</code>，重力加速度为 <code>g</code>，则平动方程常写成：</p>
 <pre><code class="language-text">m p_ddot = R * [0, 0, T]^T + [0, 0, -mg]^T
 </code></pre>
@@ -1319,7 +1481,7 @@ det(R) = 1
 <li>重力始终作用在世界坐标系竖直方向。</li>
 </ul>
 <p>这也是为什么姿态控制会直接影响位置控制。无人机想向前飞，并不是“产生前向推力”，而是先俯仰，让总推力向前倾斜。</p>
-<h3 id="_17">转动方程</h3>
+<h3 id="_17">转动方程<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>转动动力学常由刚体欧拉方程描述：</p>
 <pre><code class="language-text">J omega_dot + omega x (J omega) = tau
 </code></pre>
@@ -1335,7 +1497,7 @@ det(R) = 1
 <li>电机推力差引起的俯仰力矩。</li>
 <li>螺旋桨反扭矩引起的偏航力矩。</li>
 </ul>
-<h2 id="_18">控制分配的数学关系</h2>
+<h2 id="_18">控制分配的数学关系<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
 <p>四旋翼飞控最终要把“总推力 + 三轴力矩”的控制需求分配给四个电机。</p>
 <p>若电机推力为 <code>f_1, f_2, f_3, f_4</code>，则常见的控制分配写法是：</p>
 <pre><code class="language-text">[ T   ]   [ 1  1  1  1 ] [f_1]
@@ -1349,9 +1511,9 @@ det(R) = 1
 <li><code>c</code> 是反扭矩系数。</li>
 </ul>
 <p>这本质上是一个矩阵映射问题。已知期望控制量 <code>[T, tau_x, tau_y, tau_z]^T</code> 后，就可以通过求逆或伪逆计算四个电机推力指令。</p>
-<h2 id="_19">卡尔曼滤波</h2>
+<h2 id="_19">卡尔曼滤波<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <p>真实飞行时，无人机无法直接获得“完美状态”，只能通过 IMU、气压计、GPS、磁力计、视觉里程计等传感器进行估计。卡尔曼滤波就是最常见的状态估计工具之一。</p>
-<h3 id="_20">为什么需要滤波</h3>
+<h3 id="_20">为什么需要滤波<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <p>不同传感器各有优缺点：</p>
 <ul>
 <li>陀螺仪短时间响应快，但积分后会漂移。</li>
@@ -1360,7 +1522,7 @@ det(R) = 1
 <li>气压计能估计高度，但容易受气流影响。</li>
 </ul>
 <p>因此需要一种方法，把系统模型和多个传感器测量结合起来，得到更稳定的状态估计。</p>
-<h3 id="_21">线性卡尔曼滤波</h3>
+<h3 id="_21">线性卡尔曼滤波<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>线性离散系统通常写成：</p>
 <pre><code class="language-text">x_k = A x_{k-1} + B u_k + w_k
 y_k = H x_k + v_k
@@ -1387,7 +1549,7 @@ y_k = H x_k + v_k
 <li><code>R</code> 是测量噪声协方差。</li>
 <li><code>K_k</code> 越大，表示越相信测量值。</li>
 </ul>
-<h3 id="_22">扩展卡尔曼滤波</h3>
+<h3 id="_22">扩展卡尔曼滤波<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>四旋翼姿态和运动方程通常是非线性的，因此工程上更常见的是扩展卡尔曼滤波 <code>EKF</code>。</p>
 <p>EKF 的思路是：</p>
 <ul>
@@ -1402,7 +1564,7 @@ y_k = H x_k + v_k
 <li>速度与位置。</li>
 <li>高度或视觉定位状态。</li>
 </ul>
-<h3 id="_23">一个典型的姿态融合思路</h3>
+<h3 id="_23">一个典型的姿态融合思路<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>以 IMU 姿态估计为例：</p>
 <ul>
 <li>陀螺仪提供角速度，用于短时积分预测姿态。</li>
@@ -1410,7 +1572,7 @@ y_k = H x_k + v_k
 <li>磁力计提供地磁方向，用于修正偏航。</li>
 </ul>
 <p>这样可以兼顾响应速度和长期稳定性。</p>
-<h2 id="_24">从数学到飞控实现</h2>
+<h2 id="_24">从数学到飞控实现<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
 <p>如果把四旋翼飞控系统拆开看，常会得到下面这条链路：</p>
 <ol>
 <li>使用四元数或旋转矩阵表示姿态。</li>
@@ -1420,7 +1582,7 @@ y_k = H x_k + v_k
 <li>通过控制分配矩阵把控制量转换成四个电机输出。</li>
 </ol>
 <p>这说明数学并不是独立的理论模块，而是从传感器输入一路贯穿到电机输出。</p>
-<h2 id="_25">学习建议</h2>
+<h2 id="_25">学习建议<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
 <p>如果你准备进一步阅读飞控代码或自行实现控制算法，建议按下面顺序掌握：</p>
 <ol>
 <li>三维向量、矩阵乘法、转置与逆矩阵。</li>
@@ -1479,7 +1641,7 @@ y_k = H x_k + v_k
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

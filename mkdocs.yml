@@ -2,6 +2,18 @@ site_name: e100学习手册
 site_url: https://uav-wiki.page.dev
 theme:
   name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
 
 nav:
   - 概览:

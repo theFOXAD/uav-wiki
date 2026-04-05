@@ -11,4 +11,8 @@ nav:
       - 四旋翼数学基础: math.md
   - 快速开始: quickstart.md
   - 进阶开发:
-      - 二次开发指南: sd-document.md
+      - 二次开发指南:
+          - 文档总览: sd-document/index.md
+          - LubanCat 机载电脑: sd-document/lubancat.md
+          - MCU 开发指南: sd-document/mcu.md
+          - UART 通信节点: sd-document/uart-tx-node.md
